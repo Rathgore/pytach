@@ -18,7 +18,9 @@ class iTach(object):
 
         while True:
             data = s.recv(1024)
-            if data.endswith('\r'): return data
+            if data.endswith('\r'):
+                s.close()
+                return data
 
 def discover():
     p = re.compile((r'AMXB<-UUID=GlobalCache_(?P<UUID>.{12}).+'
@@ -39,6 +41,8 @@ def discover():
         data = s.recv(1024)
         match = p.match(data)
         if match:
+            s.close()
+
             itach = iTach(match.group('IP'))
             itach.uuid = match.group('UUID')
             itach.model = match.group('Model')

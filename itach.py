@@ -9,7 +9,7 @@ class iTach(object):
     def __init__(self, ip_address):
         self.ip_address = ip_address
 
-    def send_command(self, command):
+    def raw_command(self, command):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.ip_address, 4998))
 
@@ -49,4 +49,4 @@ def discover():
 
 if __name__ == '__main__':
     itach = iTach(sys.argv[1])
-    print(itach.send_command(sys.argv[2]))
+    print(itach.raw_command(sys.argv[2]))

@@ -20,7 +20,7 @@ class iTach(object):
             data = s.recv(1024)
             if data.endswith('\r'):
                 s.close()
-                return data
+                return data.rstrip()
 
 def discover():
     p = re.compile((r'AMXB<-UUID=GlobalCache_(?P<UUID>.{12}).+'

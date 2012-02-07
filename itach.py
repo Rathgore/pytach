@@ -49,5 +49,5 @@ def discover():
             return itach
 
 if __name__ == '__main__':
-    itach = iTach('itach.blep.net')
-    itach.send_command(sys.argv[1])
+    itach = iTach(sys.argv[1])
+    itach.send_command(sys.argv[2])

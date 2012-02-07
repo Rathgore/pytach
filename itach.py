@@ -18,8 +18,7 @@ class iTach(object):
 
         while True:
             data = s.recv(1024)
-            print(data)
-            if data.endswith('\r'): break
+            if data.endswith('\r'): return data
 
 def discover():
     p = re.compile((r'AMXB<-UUID=GlobalCache_(?P<UUID>.{12}).+'
@@ -50,4 +49,4 @@ def discover():
 
 if __name__ == '__main__':
     itach = iTach(sys.argv[1])
-    itach.send_command(sys.argv[2])
+    print(itach.send_command(sys.argv[2]))

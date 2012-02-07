@@ -26,7 +26,7 @@ def discover():
         r'Revision=(?P<Revision>.+?)>.+'
         r'Config-URL=http://(?P<IP>.+?)>.+'
         r'PCB_PN=(?P<PN>.+?)>.+'
-        'Status=(?P<Status>.+?)>'))
+        r'Status=(?P<Status>.+?)>'))
 
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.bind(('', 9131))
